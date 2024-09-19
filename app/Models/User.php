@@ -11,6 +11,17 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+
+    public function address(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Address::class);
+    }
+
+    public function cart()
+    {
+        return $this->hasOne(Cart::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -20,6 +31,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone'
     ];
 
     /**
